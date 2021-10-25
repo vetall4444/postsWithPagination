@@ -3,11 +3,9 @@ import { connect } from "react-redux";
 
 function Pagination(props) {
   const { countItems } = props;
-  if (!countItems) {
-    return null;
-  }
   const countPage = Math.ceil(countItems / 10);
   const pages = [];
+
   for (let i = 1; i < countPage + 1; i++) {
     pages.push(<p>{i}</p>);
   }
