@@ -6,17 +6,25 @@ export default class PostServices {
         if (!response.ok) {
           throw new Error("Ошибка запроса");
         }
-        return response.json();
+        const data = {
+          count: response.headers.get("x-total-count"),
+          items: response.json(),
+        };
+        return data;
       }
     );
     return res;
   }
-  getPosts() {
-    const res = this.fetchdata("posts/");
-    return res;
-  }
-  getComments(id) {
-    const res = this.fetchdata(`posts/${id}/comments`);
+
+  async getComments(id) {
+    const res = await fetch(`${this.mainurl}posts/${id}/comments`).then(
+      (response) => {
+        if (!response.ok) {
+          throw new Error("Ошибка запроса");
+        }
+        return response.json();
+      }
+    );
     return res;
   }
 }

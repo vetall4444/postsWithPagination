@@ -9,10 +9,13 @@ const servicePosts = new PostServices();
 function PostList(props) {
   const { posts, currentPage, postsLoaded, setCountPage } = props;
   useEffect(() => {
-    servicePosts.getPosts(currentPage).then((data) => {
-      postsLoaded(data);
-      setCountPage(data.length);
-    });
+    servicePosts
+      .getPosts(currentPage)
+      .then((data) => {
+        setCountPage(data.count);
+        return data.items;
+      })
+      .then((data) => postsLoaded(data));
   }, [postsLoaded, currentPage, setCountPage]);
 
   return (

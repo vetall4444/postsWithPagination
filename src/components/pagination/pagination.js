@@ -2,11 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 
 function Pagination(props) {
-  const { countPage } = props;
-  return <h1>{countPage}</h1>;
+  const { countItems } = props;
+  if (!countItems) {
+    return null;
+  }
+  const countPage = Math.ceil(countItems / 10);
+  const pages = [];
+  for (let i = 1; i < countPage + 1; i++) {
+    pages.push(<p>{i}</p>);
+  }
+  return <div>{pages}</div>;
 }
 
 const mapStateToProps = (state) => {
-  return { countPage: state.countPage };
+  return { countItems: state.countPage };
 };
 export default connect(mapStateToProps)(Pagination);
