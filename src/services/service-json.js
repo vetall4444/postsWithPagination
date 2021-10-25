@@ -1,12 +1,14 @@
-export default class PhotoServices {
+export default class PostServices {
   mainurl = "https://jsonplaceholder.typicode.com/";
-  async getPosts() {
-    const res = await fetch(`${this.mainurl}posts/`).then((response) => {
-      if (!response.ok) {
-        throw new Error("Ошибка запроса");
+  async getPosts(page) {
+    const res = await fetch(`${this.mainurl}posts?_page=${page}`).then(
+      (response) => {
+        if (!response.ok) {
+          throw new Error("Ошибка запроса");
+        }
+        return response.json();
       }
-      return response.json();
-    });
+    );
     return res;
   }
 

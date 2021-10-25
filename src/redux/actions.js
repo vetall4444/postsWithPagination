@@ -1,6 +1,20 @@
-const photosLoaded = (items) => {
+const postsLoaded = (items) => {
   return {
-    type: "PHOTOS_LOADED",
+    type: "POSTS_LOADED",
     payload: items,
   };
 };
+const changePage = (items) => {
+  return {
+    type: "CHANGE_PAGE",
+    payload: items,
+  };
+};
+const setCountPage = (items) => {
+  return {
+    type: "SET_COUNT_PAGE",
+    payload: items,
+  };
+};
+
+export { postsLoaded, changePage, setCountPage };
