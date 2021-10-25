@@ -1,7 +1,7 @@
 export default class PhotoServices {
   mainurl = "https://jsonplaceholder.typicode.com/";
-  async getPosts() {
-    const res = await fetch(`${this.mainurl}posts/`).then((response) => {
+  async fetchdata(name) {
+    const res = await fetch(`${this.mainurl}${name}`).then((response) => {
       if (!response.ok) {
         throw new Error("Ошибка запроса");
       }
@@ -9,16 +9,12 @@ export default class PhotoServices {
     });
     return res;
   }
-
-  async getComments(id) {
-    const res = await fetch(`${this.mainurl}posts/${id}/comments`).then(
-      (response) => {
-        if (!response.ok) {
-          throw new Error("Ошибка запроса");
-        }
-        return response.json();
-      }
-    );
+  getPosts() {
+    const res = this.fetchdata("posts/");
+    return res;
+  }
+  getComments(id) {
+    const res = this.fetchdata(`posts/${id}/comments`);
     return res;
   }
 }
