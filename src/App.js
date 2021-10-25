@@ -1,14 +1,13 @@
 import React from "react";
-import PhotoServices from "./services/service-json";
-const service = new PhotoServices();
+import PostsList from "./components/postsList/postsList";
+import Pagination from "./components/pagination/pagination";
 function App() {
-  service.getPosts().then((data) => {
-    console.log(data);
-  });
-  service.getComments(4).then((data) => {
-    console.log(data);
-  });
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <PostsList />
+      <Pagination />
+    </div>
+  );
 }
 
 export default App;

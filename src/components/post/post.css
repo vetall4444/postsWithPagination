@@ -1,0 +1,17 @@
+.post{
+  list-style-type: none;
+  border: 1px solid blue;
+  width: 1200px;
+  margin-bottom: 2em;
+  padding:1em;
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+}
+.commentToggle{
+  text-decoration: underline;
+}
+.commentToggle:hover{
+  cursor: pointer;
+  color: green
+}
