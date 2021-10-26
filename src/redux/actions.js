@@ -1,3 +1,7 @@
+import PostServices from "../services/service-json";
+
+const servicePosts = new PostServices();
+
 const postsLoaded = (items) => {
   return {
     type: "POSTS_LOADED",
@@ -17,4 +21,16 @@ const setCountPage = (items) => {
   };
 };
 
-export { postsLoaded, changePage, setCountPage };
+const loadPosts = (currentPage) => {
+  return (dispatch) => {
+    servicePosts
+      .getPosts(currentPage)
+      .then((data) => {
+        dispatch(setCountPage(data.count));
+        return data.items;
+      })
+      .then((data) => dispatch(postsLoaded(data)));
+  };
+};
+
+export { postsLoaded, changePage, setCountPage, loadPosts };

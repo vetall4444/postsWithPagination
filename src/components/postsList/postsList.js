@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import Post from "../post/post";
-import { postsLoaded, setCountPage } from "../../redux/actions";
-import PostServices from "../../services/service-json";
+import { loadPosts } from "../../redux/actions";
 import "./postList.css";
-
-const servicePosts = new PostServices();
 
 function PostList() {
   const posts = useSelector((state) => state.posts);
@@ -13,13 +10,7 @@ function PostList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    servicePosts
-      .getPosts(currentPage)
-      .then((data) => {
-        dispatch(setCountPage(data.count));
-        return data.items;
-      })
-      .then((data) => dispatch(postsLoaded(data)));
+    dispatch(loadPosts(currentPage));
   }, [currentPage, dispatch]);
 
   return (
