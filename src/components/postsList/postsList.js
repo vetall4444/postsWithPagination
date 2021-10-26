@@ -1,22 +1,26 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import Post from "../post/post";
-import { postsLoaded, changePage, setCountPage } from "../../redux/actions";
+import { postsLoaded, setCountPage } from "../../redux/actions";
 import PostServices from "../../services/service-json";
 import "./postList.css";
+
 const servicePosts = new PostServices();
 
-function PostList(props) {
-  const { posts, currentPage, postsLoaded, setCountPage } = props;
+function PostList() {
+  const posts = useSelector((state) => state.posts);
+  const currentPage = useSelector((state) => state.currentPage);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     servicePosts
       .getPosts(currentPage)
       .then((data) => {
-        setCountPage(data.count);
+        dispatch(setCountPage(data.count));
         return data.items;
       })
-      .then((data) => postsLoaded(data));
-  }, [postsLoaded, currentPage, setCountPage]);
+      .then((data) => dispatch(postsLoaded(data)));
+  }, [currentPage, dispatch]);
 
   return (
     <ul className="postList">
@@ -26,11 +30,4 @@ function PostList(props) {
     </ul>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    posts: state.posts,
-    currentPage: state.currentPage,
-  };
-};
-const mapDispatchToProps = { postsLoaded, changePage, setCountPage };
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect()(PostList);

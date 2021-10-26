@@ -22,9 +22,9 @@ export default function CommentList(props) {
   }
   return (
     <div className="commentList">
-      {comments.map((item) => {
-        return <Comment key={item.id} item={item} />;
-      })}
+      {comments.map((item) => (
+        <Comment key={item.id} item={item} />
+      ))}
     </div>
   );
 }

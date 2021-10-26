@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import "./comment.css";
-export default function Comment(props) {
+function Comment(props) {
   const { item } = props;
   return (
     <div className="comment">
@@ -9,3 +9,4 @@ export default function Comment(props) {
     </div>
   );
 }
+export default memo(Comment);

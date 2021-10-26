@@ -2,15 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import "./pagination.css";
 
-function Pagination(props) {
-  const { countItems } = props;
+const counterPages = (countItems) => {
   const countPage = Math.ceil(countItems / 10);
   const pages = [];
-
   for (let i = 1; i < countPage + 1; i++) {
     pages.push(<p key={i}>{i}</p>);
   }
-  return <div className="paginate">{pages}</div>;
+  return pages;
+};
+
+function Pagination(props) {
+  const { countItems } = props;
+  const pagesItems = counterPages(countItems);
+  return <div className="paginate">{pagesItems}</div>;
 }
 
 const mapStateToProps = (state) => {
