@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadPosts } from "../../redux/actions";
 import "./pagination.css";
 
@@ -12,7 +12,7 @@ const counterPages = (countItems) => {
   return pages;
 };
 
-function Pagination(props) {
+export default function Pagination(props) {
   const countItems = useSelector((state) => state.countPage);
   const currentPage = useSelector((state) => state.currentPage);
   const dispatch = useDispatch();
@@ -32,5 +32,3 @@ function Pagination(props) {
     </ul>
   );
 }
-
-export default connect()(Pagination);

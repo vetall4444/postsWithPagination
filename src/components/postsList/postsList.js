@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Post from "../post/post";
 import { loadPosts } from "../../redux/actions";
 import "./postList.css";
 
-function PostList() {
+export default function PostList() {
   const posts = useSelector((state) => state.posts);
   const currentPage = useSelector((state) => state.currentPage);
   const dispatch = useDispatch();
@@ -21,4 +21,3 @@ function PostList() {
     </ul>
   );
 }
-export default connect()(PostList);
