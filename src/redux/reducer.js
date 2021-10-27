@@ -1,6 +1,6 @@
 const initialState = {
   posts: [],
-  currentPage: 1,
+  currentPage: 5,
   countPage: 0,
 };
 const reducer = (state = initialState, action) => {
@@ -15,6 +15,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         countPage: action.payload,
+      };
+    }
+    case "SET_CURRENT_PAGE": {
+      return {
+        ...state,
+        currentPage: action.payload,
       };
     }
     case "POSTS_LOADED": {

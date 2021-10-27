@@ -1,10 +1,12 @@
 import React, { memo } from "react";
 import "./comment.css";
 function Comment(props) {
-  const { item } = props;
+  const { item, num } = props;
   return (
     <div className="comment">
-      <h3>{item.name}</h3>
+      <h3>
+        {num}){item.name}
+      </h3>
       <p>{item.body}</p>
     </div>
   );

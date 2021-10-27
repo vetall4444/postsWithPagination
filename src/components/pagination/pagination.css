@@ -2,3 +2,9 @@
   display: flex;
   justify-content: center;
 }
+.active span{
+  color: blue !important;
+}
+.paginate span:hover{
+  cursor: pointer;
+}

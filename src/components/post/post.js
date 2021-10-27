@@ -9,7 +9,7 @@ export default function Post(props) {
   const comments = isVisibleComments && <CommentList id={id} />;
 
   return (
-    <li className="post">
+    <li className="post uk-margin-small">
       <h2>{body}</h2>
       {comments}
       <div className="commentToggle" onClick={toggleVisible}>

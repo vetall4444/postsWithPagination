@@ -14,6 +14,12 @@ const changePage = (items) => {
     payload: items,
   };
 };
+const setCurrentPage = (items) => {
+  return {
+    type: "SET_CURRENT_PAGE",
+    payload: items,
+  };
+};
 const setCountPage = (items) => {
   return {
     type: "SET_COUNT_PAGE",
@@ -27,6 +33,7 @@ const loadPosts = (currentPage) => {
       .getPosts(currentPage)
       .then((data) => {
         dispatch(setCountPage(data.count));
+        dispatch(setCurrentPage(currentPage));
         return data.items;
       })
       .then((data) => dispatch(postsLoaded(data)));
