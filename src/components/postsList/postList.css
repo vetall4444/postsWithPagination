@@ -3,5 +3,6 @@
   flex-wrap: wrap;
   align-items: center;
   flex-direction: column;
-  padding-right: 30px;
+  padding: 0px 10% 0px 10%;
+  margin-top: 20px;
 }

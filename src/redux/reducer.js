@@ -1,6 +1,6 @@
 const initialState = {
   posts: [],
-  currentPage: 5,
+  currentPage: 1,
   countPage: 0,
 };
 const reducer = (state = initialState, action) => {

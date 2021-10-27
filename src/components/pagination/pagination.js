@@ -18,6 +18,7 @@ function Pagination(props) {
   const dispatch = useDispatch();
 
   const pagesItems = counterPages(countItems);
+
   return (
     <ul className="paginate uk-pagination">
       {pagesItems.map((item) => {
